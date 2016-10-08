@@ -16,7 +16,7 @@ app.use('/controllers',express.static('controllers'));
 app.use('/routes',express.static('routes'));
 
 
-mongoose.connect('mongodb://localhost/futbol', function(err, res) {
+mongoose.connect('mongodb://localhost/convoke', function(err, res) {
   if(err) {
     console.log('ERROR: connecting to Database. ' + err);
   } else {
