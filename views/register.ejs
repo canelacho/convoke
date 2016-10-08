@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="registerUsers">
+<head>
+	<% include ../views/partials/head %>
+  <title>Registro Lunes Futbol Club</title>
+</head>
+
+<body ng-controller="register" ng-Cloak>
+
+<div class="container">
+
+<% include ../views/partials/header %>
+
+
+<h3>{{ activeList[0].listname}}</h3>
+<div> {{ activeList[0].dateevent | date: "fullDate" }}</div>
+
+<div id="cache" ng-hide="true"></div>
+
+<br>
+
+<div class="row">
+	<form class="" ng-submit="addUser(userName, activeList[0]._id)" class="row">  <!-- form-inline -->
+	  <div class="row">
+      <div class="input-field col s9">
+      	<i class="material-icons prefix">face</i>
+        <input id="user" type="text" class="validate" placeholder="Add Name" ng-model="userName">
+        <label for="user">Name</label>
+      </div>
+      <button type="submit" class="btn-floating btn-large waves-effect waves-light" onclick="Materialize.toast('User Added', 3000)">
+      	<i class="material-icons">add</i>
+      </button>
+	  </div>
+  </form>
+ </div>
+
+<div class="row">
+			<i class="material-icons">assignment_turned_in</i> Registered: <strong style="color:green">{{ totalUsers }} / {{ activeList[0].maxuserslist }} </strong><br>
+			<i class="material-icons">assignment</i> On hold <strong style="color:red">{{ waitingUsers }}</strong></span><br>
+
+			<i class="material-icons">local_atm</i> Price <strong> {{ activeList[0].price | currency}} </strong> <br>
+
+			<i class="material-icons">watch_later</i> Time <strong>{{ activeList[0].time }} </strong>
+</div>
+
+<div class="row">
+	<ul class="col s12">
+    <li class="" ng-repeat="user in activeList[0].users">
+    		<div class="chip col s6">
+    		 {{$index + 1}} -
+ 				  <img ng-src="{{ user.userAvatar }}" alt="User Avatar" />
+	        <span class="">{{ user.username}} - </span>
+	        <span class="aria-hidden:true" ng-show="user.done" ><i class="material-icons">done</i></span>
+        </div>
+        <div class="col s5">
+				  <a class="btn-floating light-blue darken-3 btn-mediun waves-effect waves-light" ng-show="editUser(user.cacheguest, activeList[0].ownername)"><i class="material-icons">create</i></a>
+				  <a class="btn-floating light-green darken-4 btn-mediun waves-effect waves-light" ng-show="false"><i class="material-icons">save</i></a>
+				  <a class="btn-floating red darken-4 btn-mediun waves-effect waves-light" ng-click="deleteUser(user.username, activeList[0]._id)" ng-show="editUser(user.cacheguest, activeList[0].ownername)"><i class="material-icons">delete_forever</i></a>
+			  </div>
+    </li>
+  </ul>
+</div>
+
+
+	
+
+</div>
+
+<script src="../controllers/ctrllerConvoke.js"></script>
+
+<% include ../views/partials/footer %>
+          
+</body>
+</html>
