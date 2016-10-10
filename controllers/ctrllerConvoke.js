@@ -2,7 +2,11 @@ var app = angular.module('registerUsers', []);
 app.controller('register', ['$scope', '$http', '$window', function($scope, $http, $window, $cookiesProvider) {
     
   console.log("Connected to Angular OK..."); 
+
   var cacheGuest = $('#cache').text();
+  var listIdLoad = $('#listIdLoad').text();
+  console.log("parametro de id: " + listIdLoad);
+
   var sessionUser = "Pedro";
 
   $scope.editUser = function(cacheFound, ownerName){
@@ -16,8 +20,8 @@ app.controller('register', ['$scope', '$http', '$window', function($scope, $http
   }
   
 
-  var loadList = function(listName){
-    $http({method:'GET',url:'/list/57f957ddae8dd5f1bed45864', params:{findList: listName} }).success(function(data,status,headers,config) {
+  var loadList = function(listIdLoad){
+    $http({method:'GET',url:'/list/' + listIdLoad }).success(function(data,status,headers,config) {
       if(data){
         console.log('Finded: ' + (JSON.stringify(data, null, 4)) );
         $scope.activeList = data;
@@ -35,7 +39,7 @@ app.controller('register', ['$scope', '$http', '$window', function($scope, $http
     });
   };
 
-  loadList("Primera");
+  
   //$scope.list = loadList();
   
   // var userList = {
@@ -60,7 +64,7 @@ app.controller('register', ['$scope', '$http', '$window', function($scope, $http
         console.log('User added and saved');
         console.log(data);
         $scope.userName = '';
-        loadList();
+        loadList(listIdLoad);
       }else{
         console.log('error adding new user')
       }
@@ -82,6 +86,6 @@ app.controller('register', ['$scope', '$http', '$window', function($scope, $http
 
   };
 
- 
+loadList(listIdLoad);
     
 }]);

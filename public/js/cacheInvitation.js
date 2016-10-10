@@ -12,4 +12,5 @@ if(!localStorage.getItem("guest")){
 } 
 
 document.getElementById('cache').innerHTML = localStorage.getItem("guest");
+document.getElementById('listIdLoad').innerHTML = window.location.href.split("/").pop();
 

@@ -43,7 +43,7 @@ addUserToList = function(req, res) {
 		listId: req.body.listid,
 		name: req.body.name,
 		status: true,
-		pictureLink: "/avatar/dog.jpg",
+		pictureLink: "/avatar/dog.png",
     cacheGuest: req.body.cacheguest
 	};
 

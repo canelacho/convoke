@@ -24,8 +24,8 @@ mongoose.connect('mongodb://localhost/convoke', function(err, res) {
   }
 });
 
-app.get('/', function(req, res){
-	res.render('register');
+app.get('/invited/:id', function(req, res){
+	res.render('register', {"id":req.params.id});
 });
 
 app.get('/login', function(req, res){

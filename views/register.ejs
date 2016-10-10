@@ -13,9 +13,11 @@
 
 
 <h3>{{ activeList[0].listname}}</h3>
+<div> by: <strong>{{ activeList[0].ownername}}</strong></div>
 <div> {{ activeList[0].dateevent | date: "fullDate" }}</div>
 
 <div id="cache" ng-hide="true"></div>
+<div id="listIdLoad" ng-hide="true"></div>
 
 <br>
 
@@ -24,8 +26,8 @@
 	  <div class="row">
       <div class="input-field col s9">
       	<i class="material-icons prefix">face</i>
-        <input id="user" type="text" class="validate" placeholder="Add Name" ng-model="userName">
-        <label for="user">Name</label>
+        <input id="user" type="text" class="validate" placeholder="Your Name" ng-model="userName">
+        <label for="user">Add to List</label>
       </div>
       <button type="submit" class="btn-floating btn-large waves-effect waves-light" onclick="Materialize.toast('User Added', 3000)">
       	<i class="material-icons">add</i>
@@ -65,6 +67,8 @@
 	
 
 </div>
+
+<div class="center-align">by: hdpl</div>
 
 <script src="../controllers/ctrllerConvoke.js"></script>
 

@@ -5,6 +5,8 @@ var listSchema = new Schema({
 	ownerid: 			{ type: String },
 	ownername: 		{ type: String },
 	listname: 		{ type: String },
+	type:         { type: String }, // type of list, futbo, music, some other theme
+	public:       { type: Boolean }, // public or privated list on dashboard
 	dateevent: 		{ type: Date },
 	datecreate: 	{ type: Date },
 	maxuserslist: { type: Number },
