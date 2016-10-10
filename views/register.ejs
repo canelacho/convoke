@@ -11,13 +11,15 @@
 
 <% include ../views/partials/header %>
 
-
-<h3>{{ activeList[0].listname}}</h3>
-<div> by: <strong>{{ activeList[0].ownername}}</strong></div>
-<div> {{ activeList[0].dateevent | date: "fullDate" }}</div>
-
+<div class="section">
+<div class="" style="background-image: url('/img/campoFutbol.jpg'); background-repeat: no-repeat; color:#fff; background-size: 100%">
+  <h3 style="padding:3px 3px; text-shadow: 2px 2px 2px #000">{{ activeList[0].listname}}</h3>
+  <div style="padding:3px 3px; text-shadow: 2px 2px 2px #000"> by: <strong>{{ activeList[0].ownername}}</strong></div>
+  <div style="padding:3px 3px; text-shadow: 2px 2px 2px #000"> {{ activeList[0].dateevent | date: "fullDate" }}</div>
+</div>
 <div id="cache" ng-hide="true"></div>
 <div id="listIdLoad" ng-hide="true"></div>
+</div>
 
 <br>
 
