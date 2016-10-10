@@ -78,7 +78,7 @@ app.controller('register', ['$scope', '$http', '$window', function($scope, $http
       if(data){
         console.log('User deleted');
         console.log(data);
-        loadList();
+        loadList(listIdLoad);
       }else{
         console.log('error deleting user')
       }
