@@ -1,17 +1,16 @@
 var app = angular.module('registerUsers', []);
 app.controller('register', ['$scope', '$http', '$window', function($scope, $http, $window, $cookiesProvider) {
     
-  console.log("Connected to Angular OK..."); 
+  // console.log("Connected to Angular OK..."); 
 
   var cacheGuest = $('#cache').text();
   var listIdLoad = $('#listIdLoad').text();
-  console.log("parametro de id: " + listIdLoad);
-
+  
   var sessionUser = "Pedro";
 
   $scope.editUser = function(cacheFound, ownerName){
-    console.log("cacheFound: "+ cacheFound+" y cacheGuest: " + cacheGuest);
-    console.log("propietario: " + ownerName);
+    // console.log("cacheFound: "+ cacheFound+" y cacheGuest: " + cacheGuest);
+    // console.log("propietario: " + ownerName);
     if(cacheFound == cacheGuest || ownerName == sessionUser){
       return true;
     } else {
@@ -23,7 +22,7 @@ app.controller('register', ['$scope', '$http', '$window', function($scope, $http
   var loadList = function(listIdLoad){
     $http({method:'GET',url:'/list/' + listIdLoad }).success(function(data,status,headers,config) {
       if(data){
-        console.log('Finded: ' + (JSON.stringify(data, null, 4)) );
+        // console.log('Finded: ' + (JSON.stringify(data, null, 4)) );
         $scope.activeList = data;
         $scope.totalUsers = data[0].users.length;
 
@@ -39,30 +38,16 @@ app.controller('register', ['$scope', '$http', '$window', function($scope, $http
     });
   };
 
-  
-  //$scope.list = loadList();
-  
-  // var userList = {
-  //   date: "Lunes, 03 de Octubre de 2016",
-  //   users: [
-  //     {user:'Hernan', done:true},
-  //     {user:'Kike', done:true}
-  //   ]};
-
-  //$scope.userList = loadList();
-  // $scope.waitingUsers = waiting();
-
-
 
   $scope.addUser = function(userName, listId) {
-    console.log(userName + " - " + listId + " - " + cacheGuest);
+    // console.log(userName + " - " + listId + " - " + cacheGuest);
     // $scope.totalUsers = userList.users.length;
     // $scope.waitingUsers = waiting();
 
     $http({method:'PUT',url:'/list/user/', data:{name:userName, listid: listId, cacheguest: cacheGuest } }).success(function(data,status,headers,config) {
       if(data){
-        console.log('User added and saved');
-        console.log(data);
+        // console.log('User added and saved');
+        // console.log(data);
         $scope.userName = '';
         loadList(listIdLoad);
       }else{
@@ -73,11 +58,11 @@ app.controller('register', ['$scope', '$http', '$window', function($scope, $http
   };
 
   $scope.deleteUser = function(userName, listId){
-    console.log(userName + " - " + listId);
+    // console.log(userName + " - " + listId);
     $http({method:'DELETE',url:'/list/user/', params:{name:userName, listid: listId} }).success(function(data,status,headers,config) {
       if(data){
-        console.log('User deleted');
-        console.log(data);
+        // console.log('User deleted');
+        // console.log(data);
         loadList(listIdLoad);
       }else{
         console.log('error deleting user')

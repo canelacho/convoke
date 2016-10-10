@@ -7,7 +7,7 @@ findMyLists = function(req, res) {
   Lists.find({"owner": req.params.id},
     function(err, lists){
         if(!err){
-          console.log("My Lists " + lists);
+          // console.log("My Lists " + lists);
           res.send(lists);
         } else {
           console.log("error finding lists: " + err );
@@ -21,7 +21,7 @@ findList = function(req, res) {
 	Lists.find({"_id": req.params.id},
     function(err, list){
         if(!err){
-          console.log("List finded " + list);
+          // console.log("List finded " + list);
           res.send(list);
         } else {
           console.log("error finding list: " + err );
@@ -47,7 +47,7 @@ addUserToList = function(req, res) {
     cacheGuest: req.body.cacheguest
 	};
 
-  console.log(dataUser);
+  // console.log(dataUser);
 
  	Lists.update(
     { "_id" : dataUser.listId },
@@ -96,7 +96,7 @@ removeUserFromList = function(req, res){
     listId: req.query.listid,
     name: req.query.name, 
   };
-  console.log(dataUser);
+  // console.log(dataUser);
   
  
   Lists.update(
@@ -116,8 +116,8 @@ removeUserFromList = function(req, res){
 
 
 // link routes
-app.get('/list/:id',findList); // list to work with
-app.get('/lists/:id',findMyLists); // lists of user
+app.get('/list/:id',findList); // list to invite people
+app.get('/lists/:id',findMyLists); // lists of user in dashboard 
 app.post('/list/:id',addList);
 app.delete('/list/remove/:id', removeList);
 
