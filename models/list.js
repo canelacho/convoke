@@ -9,6 +9,7 @@ var listSchema = new Schema({
 	public:       { type: Boolean }, // public or privated list on dashboard
 	dateevent: 		{ type: Date },
 	datecreate: 	{ type: Date },
+	location:     { type: String },
 	maxuserslist: { type: Number },
 	numuserxteam: { type: Number },
 	price:        { type: Number}, 
@@ -19,7 +20,9 @@ var listSchema = new Schema({
 		username: 		{ type: String },
 		done:  				{ type: Boolean },
 		userAvatar: 	{ type: String },
-		cacheguest: 	{ type: String }
+		cacheguest: 	{ type: String },
+		attended: 		{ type: Boolean },
+		paid: 				{ type: Boolean }
 	} ]  
 });
 

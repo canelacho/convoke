@@ -29,6 +29,12 @@ app.get('/invited/:id', function(req, res){
 });
 
 app.get('/login', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || 
+    req.connection.remoteAddress || 
+    req.socket.remoteAddress ||
+    req.connection.socket.remoteAddress;
+ console.log(ip);
+ console.log(req.connection.remoteAddress)
   res.render('login');
 });
 
