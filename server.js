@@ -24,23 +24,28 @@ mongoose.connect('mongodb://localhost/convoke', function(err, res) {
   }
 });
 
-app.get('/invited/:id', function(req, res){
-	res.render('register', {"id":req.params.id});
+app.get('/convoke/:id', function(req, res){
+	res.render('convoke', {"id":req.params.id});
 });
 
 app.get('/login', function(req, res){
-    var ip = req.headers['x-forwarded-for'] || 
-    req.connection.remoteAddress || 
-    req.socket.remoteAddress ||
-    req.connection.socket.remoteAddress;
- console.log(ip);
- console.log(req.connection.remoteAddress)
+
+//       var ip;
+// if (req.headers['x-forwarded-for']) {
+//     ip = req.headers['x-forwarded-for'].split(",")[0];
+// } else if (req.connection && req.connection.remoteAddress) {
+//     ip = req.connection.remoteAddress;
+// } else {
+//     ip = req.ip;
+// }console.log("client IP is *********************" + ip);
+
   res.render('login');
 });
 
-
+routes = require('./routes/login')(app);
 routes = require('./routes/lists')(app);
 routes = require('./routes/users')(app);
+
 
 server.listen(3004, function(){
 	console.log("Futbol Server running on port 3004");
