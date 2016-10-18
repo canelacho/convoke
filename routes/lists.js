@@ -1,6 +1,8 @@
 module.exports = function(app) {
 
 var Lists = require('../models/list.js');
+var session_middleware = require('../middlewares/session.js');
+
 
 //GET - Return list of user 
 findMyLists = function(req, res) {
@@ -18,15 +20,27 @@ findMyLists = function(req, res) {
 
 //GET - Return list to work 
 findList = function(req, res) {
-	Lists.find({"_id": req.params.id},
+  
+  console.log('watching session!!!: '+ req.session.convoker);
+
+  if(!req.session.convoker){
+    console.log('no encontre un carajo');
+    // res.redirect("http://www.google.com");
+    res.location('/').end();
+  } else {
+    console.log('encontre esa mierda');
+    Lists.find({"_id": req.params.id},
     function(err, list){
-        if(!err){
-          // console.log("List finded " + list);
-          res.send(list);
-        } else {
-          console.log("error finding list: " + err );
-        }
-      })
+      if(!err){
+        // console.log("List finded " + list);
+        res.send(list);
+      } else {
+        console.log("error finding list: " + err );
+      }
+    });
+  }
+
+	
 };
 
 
@@ -98,7 +112,6 @@ removeUserFromList = function(req, res){
   };
   // console.log(dataUser);
   
- 
   Lists.update(
       { _id : dataUser.listId },
       { $pull: { users : { username: dataUser.name } } },
