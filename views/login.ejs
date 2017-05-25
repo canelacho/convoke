@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="login">
 <head>
 	<meta charset="utf-8">
   <!--Let browser know website is optimized for mobile-->
@@ -7,32 +7,32 @@
 
   <!-- ANGULAR -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-  <!-- BOOSTRAP -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="s ha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
 
   <!--Import Google Icon Font-->
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <!--  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> // Using local sourcing -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+  <!-- Convoke CSS -->
   <link rel="stylesheet" type="text/css" href="css/login.css">
 
-  <title>Login</title>
+  <title>Convoke : Login</title>
 	
 </head>
-<body ng-app="login">
+<body ng-controller="loginCtrl">
 
-<div class="container" ng-controller="loginCtrl">
+<div class="container">
 
-<center>
-  <img src="/img/convoke_v.png" class="responsive-img">
-</center>
+  <center>
+    <img src="/img/convoke_v.png" class="responsive-img">
+  </center>
 
-<div class="row area">
+  <div class="row area">
 
     <div class="col s12">
       
-        <button class="waves-effect waves-light btn-large col s3 offset-s3" ng-click="showLogin()" ng-init="showForm=true">Star Convoke</button>
+        <button class="waves-effect waves-light btn-large col s3 offset-s3" ng-click="showLogin()" ng-init="showForm=true">Login Convoke</button>
         <div class="col"></div>
         <button class="waves-effect waves-light btn-large col s3" ng-click="showRegister()">New User</button>
     </div>
@@ -41,12 +41,12 @@
       <form class="col s12">
           <div class="input-field col s12 m8 l8 offset-m2 offset-l2">
             <i class="material-icons prefix">account_circle</i>
-            <input id="icon_prefix" type="text" class="a" ng-model="user">
-            <label for="icon_prefix">Login</label>
+            <input id="icon_prefix" type="text" class="validate" ng-model="user" name="user">
+            <label for="icon_prefix">User</label>
           </div>
           <div class="input-field col s12 m8 l8 offset-m2 offset-l2">
             <i class="material-icons prefix">fingerprint</i>
-            <input id="icon_telephone" type="password" class="validate" ng-model="userPwd">
+            <input id="icon_telephone" type="password" class="validate" ng-model="userPwd" name="password">
             <label for="icon_telephone">Password</label>
           </div>
 
@@ -92,14 +92,14 @@
 
   
 
-	<!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
-  
-  <!-- <script type="text/javascript" src="js/materialize.min.js"></script>  // Using local sourcing -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
 
-  <!-- My Angular Login -->
-  <script src="controllers/ctrllerLogin.js"></script>
+<!-- <script type="text/javascript" src="js/materialize.min.js"></script>  // Using local sourcing -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+<!-- My Angular Login -->
+<script src="controllers/ctrllerLogin.js"></script>
              
 
 </body>

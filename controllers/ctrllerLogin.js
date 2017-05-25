@@ -1,21 +1,21 @@
 var app = angular.module('login', []);
 app.controller('loginCtrl',['$scope', '$http', '$window', function($scope, $http, $window){
 
-	console.log('Connected to angular login successful');
+console.log('Connected to angular login successful');
 
 var showForm = false;
 
+// change between login and join us
 $scope.showLogin = function(){
 	$scope.showForm = true;
-	console.log(showForm); 
 }
 
+// change between join us and login
 $scope.showRegister = function(){
 	$scope.showForm = false;
-	console.log(showForm); 
-
 }
 
+// start session by login
 $scope.starSession = function(user, userPwd){
 	console.log(user, userPwd);
 	var loginConvoker = {
@@ -25,7 +25,7 @@ $scope.starSession = function(user, userPwd){
 
 	$http({method:'POST', url:'/login', data:{loginConvoker} }).success(function(data, status, headers, config){
 		if(data){
-			$window.location.href = '/dashboard/' + data[0]._id;
+			$window.location.href = '/app/dashboard/' + data[0]._id;
 		} else {
 			console.log('error login Convoker');
 		}
@@ -33,6 +33,7 @@ $scope.starSession = function(user, userPwd){
 
 };
 
+// register new user on join us
 $scope.registerNewUser = function(nickName, email, pwd){
 	console.log(nickName, email, pwd);
 	var newRegister = {

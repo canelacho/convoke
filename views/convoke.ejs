@@ -54,8 +54,13 @@
     		<div class="chip col s6">
     		 {{$index + 1}} -
  				  <img ng-src="{{ user.userAvatar }}" alt="User Avatar" />
-	        <span class="">{{ user.username}} - </span>
-	        <span class="aria-hidden:true" ng-show="user.done" ><i class="material-icons">done</i></span>
+	        <span class="">{{ user.username }} - </span>
+	        <span>
+            <a class="waves-effect waves-light btn green" ng-click="asistio = false" ng-show="asistio">Asistio<a>
+            <a class="waves-effect waves-light btn red" ng-click="asistio = true" ng-show="!asistio">Asistio<a>
+            <a class="waves-effect waves-light btn green" ng-click="pago = false" ng-show="pago">Asistio<a>
+            <a class="waves-effect waves-light btn red" ng-click="pago = true" ng-show="!pago">Asistio<a>
+          </span>
         </div>
         <div class="col s5">
 				  <a class="btn-floating light-blue darken-3 btn-mediun waves-effect waves-light" ng-show="editUser(user.cacheguest, activeList[0].ownername)"><i class="material-icons">create</i></a>
@@ -73,7 +78,7 @@
 
 <div class="center-align">by: hdpl</div>
 
-<script src="../controllers/ctrllerConvoke.js"></script>
+<script src="../controllers/ctrllerPublicConvoke.js"></script>
 
 <% include ../views/partials/footer %>
 

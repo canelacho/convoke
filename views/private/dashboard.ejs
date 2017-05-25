@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="dashboard">
+<head>
+	<% include ../partials/head %>
+  <title>Dashboard</title>
+</head>
+
+<body ng-controller="dashboardCtrl" ng-Cloak>
+
+	<div class="container">
+
+	<% include ../partials/header %>
+
+	<!-- <hr> -->
+	<div class="flow-text right-align">User: Hernan Piña</div>
+
+	<h1>My Convokes</h1>
+ 	<table class="responsive-table highlight">
+    <thead>
+      <tr>
+      		<th data-field="price">Status</th>
+          <th data-field="id">Name</th>
+          <th data-field="name">Date</th>
+          <th data-field="price">Type</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Active</td>
+        <td>Lunes Costa E.</td>
+        <td>17 Oct 2016</td>
+        <td>Soccer</td>
+      </tr>
+      <tr>
+        <td>Inactive</td>
+        <td>Las Americas</td>
+        <td>19 Oct 2016</td>
+        <td>Soccer</td>
+      </tr>
+      <tr>
+        <td>Active</td>
+        <td>Amador</td>
+        <td>22 Oct 2016</td>
+        <td>Soccer</td>
+      </tr>
+    </tbody>
+  </table>
+            
+
+
+	<div class="center-align"><p>by: hdpl</p></div>
+
+	<script src="../../controllers/ctrllerDashboard.js"></script>
+
+	<% include ../partials/footer %>
+
+	</div>
+          
+</body>
+</html>

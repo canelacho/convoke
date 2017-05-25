@@ -46,7 +46,7 @@ findList = function(req, res) {
 
 //POST - Create new List 
 addList = function(req, res){
-
+  
 };
 
 
@@ -57,7 +57,7 @@ addUserToList = function(req, res) {
 		listId: req.body.listid,
 		name: req.body.name,
 		status: true,
-		pictureLink: "/avatar/dog.png",
+		pictureLink: "/avatar/hallowen.png",
     cacheGuest: req.body.cacheguest
 	};
 
@@ -128,11 +128,12 @@ removeUserFromList = function(req, res){
 };
 
 
-// link routes
+// API ROUTES
+
 app.get('/list/:id',findList); // list to invite people
 app.get('/lists/:id',findMyLists); // lists of user in dashboard 
 app.post('/list/:id',addList);
-app.delete('/list/remove/:id', removeList);
+app.delete('/list/:id', removeList);
 
 app.put('/list/user/', addUserToList);
 app.delete('/list/user/', removeUserFromList);

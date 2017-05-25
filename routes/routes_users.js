@@ -73,7 +73,7 @@ deletedUser = function(req, res){
 };
 
 
-// link routes
+	// API ROUTES
 
 app.get('/user/findAll/',findAllUsers); 
 app.get('/user/find/:id',findUser); 

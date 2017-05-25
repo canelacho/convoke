@@ -1,14 +1,19 @@
 module.exports = function(app){
 
-Convoker = require('../models/user.js');
+User = require('../models/user');
 
-loginConvoker = function(req, res){
-	console.log('start to login a convoker');
-	console.log(req.body.loginConvoker);
+validatingLogin = function(req, res){
 
-	Convoker.find({ email: req.body.loginConvoker.user }, function(err, User){
+	// console.log('===============')
+	// console.log(req.body.loginConvoker);
+	// console.log('===============')
+	// console.log(req.body)
 
-		if(User[0].email == req.body.loginConvoker.user && User[0].pwd == req.body.loginConvoker.pwd){
+
+
+	User.find({ name: req.body.loginConvoker.user }, function(err, User){
+
+		if(User[0].name == req.body.loginConvoker.user && User[0].pwd == req.body.loginConvoker.pwd){
 			console.log('User finded');
 			console.log(User);
 			req.session.Convoker = {
@@ -16,6 +21,7 @@ loginConvoker = function(req, res){
 				user: User[0].name,
 				email: User[0].email
 			}
+			res.locals.ConvokerLocal = req.session.Convoker;
 			res.send(User);
 		} else {
 			console.log('error User or Password not match or error ' + err);
@@ -48,10 +54,10 @@ registerNewConvoker = function(req, res){
 };
 
 
-// link routes
+	// API ROUTES
 
 	app.post('/register', registerNewConvoker);
 
-	app.post('/login', loginConvoker);
+	app.post('/login', validatingLogin);
 
 }

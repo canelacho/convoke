@@ -5,6 +5,9 @@ app.controller('register', ['$scope', '$http', '$window', function($scope, $http
 
   var cacheGuest = $('#cache').text();
   var listIdLoad = $('#listIdLoad').text();
+
+  $scope.asistio = false;
+  $scope.pago = false;
   
   var sessionUser = "Pedro";
 
